@@ -24,6 +24,14 @@ public class MusicPlayer {
         }
     }
 
+    public void doMyInit() {
+        System.out.println("Bean's initialisation");
+    }
+
+    public void doMyDestroy() {
+        System.out.println("Bean's destruction");
+    }
+
     public void showProperties() {
         System.out.println("Player: " + name + " | Volume: " + volume);
     }
@@ -36,17 +44,17 @@ public class MusicPlayer {
         this.musicList = musicList;
     }
 
-    public String getName() {
-        return name;
-    }
+//    public String getName() {
+//        return name;
+//    }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public int getVolume() {
-        return volume;
-    }
+//    public int getVolume() {
+//        return volume;
+//    }
 
     public void setVolume(int volume) {
         this.volume = volume;

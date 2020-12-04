@@ -22,7 +22,10 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="com.stephen.springcourse.MusicPlayer">
+          class="com.stephen.springcourse.MusicPlayer"
+          init-method="doMyInit"
+          destroy-method="doMyDestroy"
+    >
         <property name="musicList">
             <list>
                 <ref bean="tranceBean" />
