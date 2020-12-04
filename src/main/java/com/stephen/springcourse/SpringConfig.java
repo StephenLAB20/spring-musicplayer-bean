@@ -8,4 +8,6 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan("com.stephen.springcourse")
 @PropertySource("classpath:musicPlayer.properties")
 public class SpringConfig {
+
+
 }

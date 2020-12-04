@@ -6,19 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TranceMusic implements Music {
+public class JazzMusic implements Music {
 
     private List<String> songs = new ArrayList<>();
     {
-        songs.add("Trance Music 1");
-        songs.add("Trance Music 2");
-        songs.add("Trance Music 3");
+        songs.add("Jazz Music 1");
+        songs.add("Jazz Music 2");
+        songs.add("Jazz Music 3");
+        songs.add("Jazz Music 4");
+        songs.add("Jazz Music 5");
+        songs.add("Jazz Music 6");
+        songs.add("Jazz Music 7");
     }
-
 
     @Override
     public String getGenre() {
-        return "Trance Music";
+        return "Jazz Music";
     }
 
     @Override

@@ -4,54 +4,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Component
 @Scope("singleton")
 public class MusicPlayer {
 
-    private ClassicalMusic classicalMusic;
-    private RockMusic rockMusic;
-    private TranceMusic tranceMusic;
+    @Value("${musicPlayer.name}")
     private String name;
+    @Value("${musicPlayer.volume}")
     private int volume;
+    @Autowired
+    private List<Music> musicList = new ArrayList<>();
 
     // empty constructor for spring
     public MusicPlayer() {
     }
 
-    // my constructor
-    @Autowired
-    public MusicPlayer(@Value("${musicPlayer.name}") String name, @Value("${musicPlayer.volume}") int volume,
-                       ClassicalMusic classicalMusic, RockMusic rockMusic, TranceMusic tranceMusic) {
+    public void playMusic() {
 
-        this.name = name;
-        this.volume = volume;
-        this.classicalMusic = classicalMusic;
-        this.rockMusic = rockMusic;
-        this.tranceMusic = tranceMusic;
-    }
+        int randomGenre = new Random().nextInt(musicList.size());
+        Music genre = musicList.get(randomGenre);
+        int randomSong = new Random().nextInt(genre.getSongs().size());
+        String genreName = genre.getGenre();
+        String song = genre.getSongs().get(randomSong);
 
-    public void playMusic(MusicGenre musicGenre) {
-
-        int random = new Random().nextInt(3);
-
-        switch (musicGenre) {
-            case CLASSICAL:
-                System.out.println(classicalMusic.getSongs().get(random));
-                break;
-            case ROCK:
-                System.out.println(rockMusic.getSongs().get(random));
-                break;
-            case TRANCE:
-                System.out.println(tranceMusic.getSongs().get(random));
-                break;
-            default:
-                System.out.println("Wrong genre is selected.");
-        }
+        System.out.println("Genre: " + genreName + " | song: " + song);
     }
 
     @PostConstruct

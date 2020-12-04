@@ -16,6 +16,11 @@ public class RockMusic implements Music {
     }
 
     @Override
+    public String getGenre() {
+        return "Rock Music";
+    }
+
+    @Override
     public List<String> getSongs() {
         return songs;
     }

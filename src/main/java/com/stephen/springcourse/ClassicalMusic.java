@@ -16,6 +16,11 @@ public class ClassicalMusic implements Music {
     }
 
     @Override
+    public String getGenre() {
+        return "Classical Music";
+    }
+
+    @Override
     public List<String> getSongs() {
         return songs;
     }
