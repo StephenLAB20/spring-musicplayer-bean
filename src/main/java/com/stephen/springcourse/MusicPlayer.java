@@ -1,26 +1,51 @@
 package com.stephen.springcourse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
+@Component
 public class MusicPlayer {
 
-//    private Music music;
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
+    private TranceMusic tranceMusic;
     private String name;
     private int volume;
-    private List<Music> musicList = new ArrayList<>();
 
-    // empty constructor for spring // or remove your constructor if no needed
-    public MusicPlayer() {}
-
-    // IoC
-    public MusicPlayer(List<Music> musicList) {
-        this.musicList = musicList;
+    // empty constructor for spring
+    public MusicPlayer() {
     }
 
-    public void playMusic() {
-        for (Music song: musicList) {
-            System.out.println("Playing: " + song.getSong());
+    // our constructor
+    @Autowired
+    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, TranceMusic tranceMusic) {
+
+        this.classicalMusic = classicalMusic;
+        this.rockMusic = rockMusic;
+        this.tranceMusic = tranceMusic;
+    }
+
+    public void playMusic(MusicGenre musicGenre) {
+
+        int random = new Random().nextInt(3);
+
+        switch (musicGenre) {
+            case CLASSICAL:
+                System.out.println(classicalMusic.getSongs().get(random));
+                break;
+            case ROCK:
+                System.out.println(rockMusic.getSongs().get(random));
+                break;
+            case TRANCE:
+                System.out.println(tranceMusic.getSongs().get(random));
+                break;
+            default:
+                System.out.println("Wrong genre is selected.");
         }
     }
 
@@ -36,25 +61,9 @@ public class MusicPlayer {
         System.out.println("Player: " + name + " | Volume: " + volume);
     }
 
-//    public void setMusic(Music music) {
-//        this.music = music;
-//    }
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-    }
-
-//    public String getName() {
-//        return name;
-//    }
-
     public void setName(String name) {
         this.name = name;
     }
-
-//    public int getVolume() {
-//        return volume;
-//    }
 
     public void setVolume(int volume) {
         this.volume = volume;
