@@ -23,7 +23,7 @@ public class MusicPlayer {
     public MusicPlayer() {
     }
 
-    // our constructor
+    // my constructor
     @Autowired
     public MusicPlayer(@Value("${musicPlayer.name}") String name, @Value("${musicPlayer.volume}") int volume,
                        ClassicalMusic classicalMusic, RockMusic rockMusic, TranceMusic tranceMusic) {
