@@ -11,7 +11,8 @@ public class TestSpring {
         );
 
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        musicPlayer.playMusic(MusicGenre.OTHER);
+        musicPlayer.showProperties();
+        musicPlayer.playMusic(MusicGenre.TRANCE);
 
         context.close();
     }

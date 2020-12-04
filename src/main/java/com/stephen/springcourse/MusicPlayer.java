@@ -1,14 +1,16 @@
 package com.stephen.springcourse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.util.Random;
 
 @Component
+@Scope("singleton")
 public class MusicPlayer {
 
     private ClassicalMusic classicalMusic;
@@ -23,8 +25,11 @@ public class MusicPlayer {
 
     // our constructor
     @Autowired
-    public MusicPlayer(ClassicalMusic classicalMusic, RockMusic rockMusic, TranceMusic tranceMusic) {
+    public MusicPlayer(@Value("${musicPlayer.name}") String name, @Value("${musicPlayer.volume}") int volume,
+                       ClassicalMusic classicalMusic, RockMusic rockMusic, TranceMusic tranceMusic) {
 
+        this.name = name;
+        this.volume = volume;
         this.classicalMusic = classicalMusic;
         this.rockMusic = rockMusic;
         this.tranceMusic = tranceMusic;
@@ -49,23 +54,17 @@ public class MusicPlayer {
         }
     }
 
+    @PostConstruct
     public void doMyInit() {
         System.out.println("Bean's initialisation");
     }
 
+    @PreDestroy
     public void doMyDestroy() {
         System.out.println("Bean's destruction");
     }
 
     public void showProperties() {
         System.out.println("Player: " + name + " | Volume: " + volume);
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
     }
 }
