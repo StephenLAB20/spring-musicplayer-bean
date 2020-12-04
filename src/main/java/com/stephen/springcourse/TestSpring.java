@@ -1,5 +1,6 @@
 package com.stephen.springcourse;
 
+import com.stephen.springcourse.config.SpringConfig;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class TestSpring {

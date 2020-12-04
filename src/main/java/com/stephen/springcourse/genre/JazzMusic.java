@@ -1,5 +1,6 @@
-package com.stephen.springcourse;
+package com.stephen.springcourse.genre;
 
+import com.stephen.springcourse.Music;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

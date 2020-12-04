@@ -1,23 +1,25 @@
-package com.stephen.springcourse;
+package com.stephen.springcourse.genre;
 
+import com.stephen.springcourse.Music;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class ClassicalMusic implements Music {
+public class TranceMusic implements Music {
 
     private List<String> songs = new ArrayList<>();
     {
-        songs.add("Classic Music 1");
-        songs.add("Classic Music 2");
-        songs.add("Classic Music 3");
+        songs.add("Trance Music 1");
+        songs.add("Trance Music 2");
+        songs.add("Trance Music 3");
     }
+
 
     @Override
     public String getGenre() {
-        return "Classical Music";
+        return "Trance Music";
     }
 
     @Override
